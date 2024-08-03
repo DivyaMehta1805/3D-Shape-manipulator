@@ -11,8 +11,14 @@ The 3D Shape Creator and Editor is an interactive tool built with Babylon.js tha
 - ![image](https://github.com/user-attachments/assets/4a1b715c-5a60-4420-bc8e-7d6bdaa86e1a)
 
 - **Extrude Mode**: Convert 2D shapes into 3D objects with adjustable extrusion height.
+- ![image](https://github.com/user-attachments/assets/bd171dec-b3ab-442a-8af7-a67863047026)
+
 - **Move Mode**: Reposition the 3D object within the scene.
-- **Edit Mode**: Modify individual vertices of the 3D object.
+- ![image](https://github.com/user-attachments/assets/7b46a6ad-29c7-430f-b498-97eb375ec40e)
+
+- **Vertex Edit Mode**: Modify individual vertices of the 3D object.
+- ![image](https://github.com/user-attachments/assets/9d930ee9-4896-4336-967a-8e6415cc98ce)
+
 - **Interactive GUI**: Easy-to-use buttons for switching between different modes.
 
 ## Getting Started
