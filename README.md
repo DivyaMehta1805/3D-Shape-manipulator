@@ -23,14 +23,63 @@ The 3D Shape Creator and Editor is an interactive tool built with Babylon.js tha
 
 ## Getting Started
 
-### Prerequisites
+## Button Functionalities
 
-- Ensure you have a web browser that supports WebGL (e.g., Google Chrome, Firefox, Edge).
-- Clone this repository to your local machine.
+### Draw Mode
+- **Activated by clicking the "Enter Draw Mode" button**
+- Users click on the ground to add vertices, forming the shape's outline.
+- Right-click to close the shape and complete the drawing.
 
-### Installation
+### Extrude Mode
+- **Activated by clicking the "Enter Extrude Mode" button**
+- Enables users to give height to the 2D shape, creating a 3D object.
+- Use the up and down arrow keys to increase or decrease the extrusion height.
+- The shape updates in real-time as the height changes.
 
-1. **Clone the Repository:**
+### Move Mode
+- **Activated by clicking the "Enter Move Mode" button**
+- Allows users to reposition the object.
+- Click and drag the object to move it across the ground plane.
+- Once the object is dropped to it's new position the move mode automatically gets disabled.
 
-   ```bash
-   git clone https://github.com/yourusername/3d-shape-creator.git
+### Edit Mode
+- **Activated by clicking the "Enter Edit Mode" button**
+- Vertex points appear on the object, which can be clicked and dragged to adjust the shape as needed.
+
+## Implementation Details
+
+### Draw Mode
+- The draw mode is the foundation of the shape creation process. It utilizes a click-based system to define vertices on a ground plane.
+  - Initialize an empty array to store vertex positions.
+  - On each click, capture the ground position and add it to the vertex array.
+  - Draw lines between consecutive vertices to visualize the shape.
+  - On right-click, close the shape by connecting the last vertex to the first.
+  - Create a polygon mesh from the vertices.
+
+### Extrude Mode
+- Use the original shape as the base.
+  - Create a top face by duplicating and elevating the base vertices.
+  - Generate side faces by connecting corresponding vertices of the top and bottom faces.
+  - Calculate and apply appropriate normals for proper lighting.
+  - Update the mesh in real-time as the extrusion height changes.
+
+### Move Mode
+- The move functionality provides a way to reposition the object.
+  - Capture the initial click position on the ground.
+  - Calculate the difference between the current and initial positions during dragging.
+  - Update all vertex positions of the mesh by this difference.
+
+### Edit Mode
+- Edit mode offers control over the object's shape.
+  - Creates small spheres at each vertex of the extruded shape.
+  - Enable these spheres to be selected and moved.
+  - Update the underlying mesh geometry when a vertex is moved.
+  - Recalculate normals to ensure proper lighting after edits.
+  - Note: For best results in complex 3-d shapes one might have to rotate the camera to focus on the side of the vertex that has to be edited.
+
+## General Design Considerations
+- **Mode Switching**: Each mode is mutually exclusive, ensuring clear user focus on the current task.
+- **Visual Feedback**: Buttons change color to indicate the active mode.
+- **Camera Control**: Camera movement is disabled during shape manipulation to prevent accidental changes.
+- **User Experience**: Intuitive controls (click to draw, arrow keys for extrusion) make the tool accessible to users with varying levels of 3D modeling experience.
+
